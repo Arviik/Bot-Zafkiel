@@ -84,6 +84,12 @@ public class ConnectionMusic implements VcCommandExecutor {
                         }
                     }
                     player.stopTrack();
+                    try {
+                        Thread.sleep(600000);
+                    } catch (InterruptedException e) {
+                        throw new RuntimeException(e);
+                    }
+                    channel.disconnect();
                 }).exceptionally(e -> {
                     // Failed to connect to voice channel (no permissions?)
                     e.printStackTrace();
